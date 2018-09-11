@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 //! Project version number for Acquired_SDK_IOS.
 FOUNDATION_EXPORT double Acquired_SDK_IOSVersionNumber;

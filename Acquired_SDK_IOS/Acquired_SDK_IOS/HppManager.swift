@@ -20,10 +20,10 @@ public class HppManager {
     private func generateHppUrl(hppSetting:HppSetting) ->String{
         var data = Dictionary<String, Any>()
         let mirror:Mirror = Mirror(reflecting: hppSetting)
-
+        
         for case let (label?, value) in mirror.children {
             let mi = Mirror(reflecting: value)
-            if mi.children.count == 0 {continue}
+            if mi.displayStyle == Mirror.DisplayStyle.optional && mi.children.count == 0 {continue}
             data[label] = unwrap(any: value)
         }
         let sortedByKeyDictionary = data.sorted { firstDictionary, secondDictionary in
@@ -43,6 +43,10 @@ public class HppManager {
             query = String(query[..<index])
             url = "\(url)/?\(query)"
         }
+        if(!sha256_plain.isEmpty) {
+            let hash = "\(sha256_plain.sha256())\(hppSetting.mid_hash)".sha256()
+            url = "\(url)&hash=\(hash)"
+        }
         return url
     }
     
@@ -55,13 +59,32 @@ public class HppManager {
         return some
     }
 }
-//extension String {
-//    var string2SHA256: String! {
-//        let str = self.cString(using: NSUTF8StringEncoding)
-//        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-//        let digestLen = Int(CC_SHA256_DIGEST_LENGTH)
-//        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
-//        CC_SHA256(str!, strLen, result)
-//        return stringFromBytes(result, length: digestLen)
-//    }
-//}
+extension String {
+    
+    func sha256() -> String{
+        if let stringData = self.data(using: String.Encoding.utf8) {
+            return hexStringFromData(input: digest(input: stringData as NSData))
+        }
+        return ""
+    }
+    
+    private func digest(input : NSData) -> NSData {
+        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+        var hash = [UInt8](repeating: 0, count: digestLength)
+        CC_SHA256(input.bytes, UInt32(input.length), &hash)
+        return NSData(bytes: hash, length: digestLength)
+    }
+    
+    private  func hexStringFromData(input: NSData) -> String {
+        var bytes = [UInt8](repeating: 0, count: input.length)
+        input.getBytes(&bytes, length: input.length)
+        
+        var hexString = ""
+        for byte in bytes {
+            hexString += String(format:"%02x", UInt8(byte))
+        }
+        
+        return hexString
+    }
+    
+}
