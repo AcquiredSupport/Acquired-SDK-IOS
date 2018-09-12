@@ -31,8 +31,22 @@ class HppViewController : UIViewController,WKUIDelegate, WKNavigationDelegate,UI
     
     
     func setUpWKwebView() {
+        let js = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        let wkUserScript = WKUserScript(source: js, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
         
-        let  hppView = WKWebView(frame: UIScreen.main.bounds)
+        let wkUController = WKUserContentController()
+        wkUController.addUserScript(wkUserScript)
+        
+        let preferences = WKPreferences()
+        preferences.javaScriptCanOpenWindowsAutomatically = true
+        preferences.minimumFontSize = 50.0;
+        
+
+        let wkWebConfig = WKWebViewConfiguration()
+        wkWebConfig.userContentController = wkUController
+        wkWebConfig.preferences = preferences
+        
+        let  hppView = WKWebView(frame: UIScreen.main.bounds,configuration:wkWebConfig)
         hppView.scrollView.bounces = false
         hppView.load(URLRequest(url: URL(string: (self.hppUrl)!)!))
         
