@@ -13,7 +13,7 @@ import WebKit
 
 class HppViewController : UIViewController,WKUIDelegate, WKNavigationDelegate,UIWebViewDelegate{
     
-    public var hppView : WKWebView?
+    private var hppView : WKWebView?
     public var hppUrl : String?
     lazy private var progressView: UIProgressView = {
         self.progressView = UIProgressView.init(frame: CGRect(x: CGFloat(0), y: CGFloat(1), width: UIScreen.main.bounds.width, height: 2))
@@ -31,11 +31,13 @@ class HppViewController : UIViewController,WKUIDelegate, WKNavigationDelegate,UI
     
     
     func setUpWKwebView() {
+        
         let  hppView = WKWebView(frame: UIScreen.main.bounds)
         hppView.scrollView.bounces = false
         hppView.load(URLRequest(url: URL(string: (self.hppUrl)!)!))
         
-        self.view.addSubview(hppView)
+        self.hppView  = hppView
+        self.view.addSubview(self.hppView!)
         self.view.addSubview(progressView)
         self.hppView?.uiDelegate = self
         self.hppView?.navigationDelegate = self
