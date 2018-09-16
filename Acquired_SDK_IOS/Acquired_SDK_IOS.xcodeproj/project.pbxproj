@@ -25,6 +25,10 @@
 		00073994213E269100055762 /* HppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00073993213E269100055762 /* HppManager.swift */; };
 		0007399D213E63AB00055762 /* HppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0007399C213E63AB00055762 /* HppViewController.swift */; };
 		0050F29F2141226D002B7507 /* HppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0050F29E2141226D002B7507 /* HppSetting.swift */; };
+		35AE2C5C214BB3D900A48377 /* NJKWebViewProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AE2C58214BB3D900A48377 /* NJKWebViewProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AE2C5D214BB3D900A48377 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AE2C59214BB3D900A48377 /* NJKWebViewProgress.m */; };
+		35AE2C5E214BB3D900A48377 /* NJKWebViewProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AE2C5A214BB3D900A48377 /* NJKWebViewProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35AE2C5F214BB3D900A48377 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AE2C5B214BB3D900A48377 /* NJKWebViewProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		00073993213E269100055762 /* HppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HppManager.swift; sourceTree = "<group>"; };
 		0007399C213E63AB00055762 /* HppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HppViewController.swift; sourceTree = "<group>"; };
 		0050F29E2141226D002B7507 /* HppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HppSetting.swift; sourceTree = "<group>"; };
+		35AE2C58214BB3D900A48377 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		35AE2C59214BB3D900A48377 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		35AE2C5A214BB3D900A48377 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		35AE2C5B214BB3D900A48377 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 		00073986213E23C200055762 /* Acquired_SDK_IOS */ = {
 			isa = PBXGroup;
 			children = (
+				35AE2C57214BB3D900A48377 /* NJKWebViewProgress */,
 				00073987213E23C200055762 /* Acquired_SDK_IOS.h */,
 				00073988213E23C200055762 /* Info.plist */,
 				00073993213E269100055762 /* HppManager.swift */,
@@ -85,6 +94,17 @@
 			path = Acquired_SDK_IOS;
 			sourceTree = "<group>";
 		};
+		35AE2C57214BB3D900A48377 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				35AE2C58214BB3D900A48377 /* NJKWebViewProgress.h */,
+				35AE2C59214BB3D900A48377 /* NJKWebViewProgress.m */,
+				35AE2C5A214BB3D900A48377 /* NJKWebViewProgressView.h */,
+				35AE2C5B214BB3D900A48377 /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -92,7 +112,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35AE2C5E214BB3D900A48377 /* NJKWebViewProgressView.h in Headers */,
 				00073989213E23C200055762 /* Acquired_SDK_IOS.h in Headers */,
+				35AE2C5C214BB3D900A48377 /* NJKWebViewProgress.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35AE2C5D214BB3D900A48377 /* NJKWebViewProgress.m in Sources */,
+				35AE2C5F214BB3D900A48377 /* NJKWebViewProgressView.m in Sources */,
 				0007399D213E63AB00055762 /* HppViewController.swift in Sources */,
 				00073994213E269100055762 /* HppManager.swift in Sources */,
 				0050F29F2141226D002B7507 /* HppSetting.swift in Sources */,

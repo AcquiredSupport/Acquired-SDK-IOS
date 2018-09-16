@@ -11,17 +11,12 @@ import WebKit
 
 
 
-class HppViewController : UIViewController,WKUIDelegate, WKNavigationDelegate,UIWebViewDelegate{
+class HppViewController : UIViewController, UIWebViewDelegate, NJKWebViewProgressDelegate {
     
-    private var hppView : WKWebView?
+    private var hppView : UIWebView?
     public var hppUrl : String?
-    lazy private var progressView: UIProgressView = {
-        self.progressView = UIProgressView.init(frame: CGRect(x: CGFloat(0), y: CGFloat(1), width: UIScreen.main.bounds.width, height: 2))
-        self.progressView.tintColor = UIColor.green
-        self.progressView.trackTintColor = UIColor.white
-        self.progressView.progress = 0.05
-        return self.progressView
-    }()
+    var progressView: NJKWebViewProgressView!
+    var progressProxy: NJKWebViewProgress!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,75 +24,50 @@ class HppViewController : UIViewController,WKUIDelegate, WKNavigationDelegate,UI
         setUpWKwebView()
     }
     
-    
     func setUpWKwebView() {
-        let js = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-        let wkUserScript = WKUserScript(source: js, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: true)
-        
-        let wkUController = WKUserContentController()
-        wkUController.addUserScript(wkUserScript)
-        
-        let preferences = WKPreferences()
-        preferences.javaScriptCanOpenWindowsAutomatically = true
-        preferences.minimumFontSize = 50.0;
-        
-
-        let wkWebConfig = WKWebViewConfiguration()
-        wkWebConfig.userContentController = wkUController
-        wkWebConfig.preferences = preferences
-        
-        let  hppView = WKWebView(frame: UIScreen.main.bounds,configuration:wkWebConfig)
+        let  hppView = UIWebView(frame: UIScreen.main.bounds)
         hppView.scrollView.bounces = false
-        hppView.load(URLRequest(url: URL(string: (self.hppUrl)!)!))
-        
         self.hppView  = hppView
         self.view.addSubview(self.hppView!)
-        self.view.addSubview(progressView)
-        self.hppView?.uiDelegate = self
-        self.hppView?.navigationDelegate = self
-        self.hppView?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         
-    }
-    
-    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        self.progressProxy = NJKWebViewProgress()
+        self.hppView?.delegate = self.progressProxy
+        self.progressProxy.webViewProxyDelegate = self
+        self.progressProxy.progressDelegate = self
         
-        if keyPath == "estimatedProgress"{
-//            progressView.alpha = 1.0
-            progressView.setProgress(Float((self.hppView?.estimatedProgress)! ), animated: true)
-            if (self.hppView?.estimatedProgress )!  >= 1.0 {
-                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveEaseOut, animations: {
-                    self.progressView.alpha = 0
-                }, completion: { (finish) in
-                    self.progressView.setProgress(0.0, animated: false)
-                })
-            }
-        }
-    }
-
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!){
-        
-    }
-    
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!){
+        let progressBarHeight: CGFloat = 2
+        let navigaitonBarBounds: CGRect = self.navigationController!.navigationBar.bounds
+        let barFrame: CGRect = CGRect(x: 0, y: navigaitonBarBounds.size.height-CGFloat(Int(progressBarHeight/2)), width: navigaitonBarBounds.size.width, height: progressBarHeight)
+        self.progressView = NJKWebViewProgressView(frame: barFrame)
+        self.progressView.progressBarView.backgroundColor = UIColor.orange
+        self.progressView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
         self.progressView.isHidden = true
-    }
-    func webViewDidClose(_ webView: WKWebView) {
         
+        self.hppView?.loadRequest(URLRequest(url: URL(string: (self.hppUrl)!)!))
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-    }
+    
     deinit {
-        self.hppView?.removeObserver(self, forKeyPath: "estimatedProgress")
-        self.hppView?.uiDelegate = nil
-        self.hppView?.navigationDelegate = nil
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.addSubview(self.progressView)
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.progressView.removeFromSuperview()
+    }
     
+    func webViewProgress(_ webViewProgress: NJKWebViewProgress!, updateProgress progress: Float) {
+        if progress > 0 {
+            self.progressView.isHidden = false
+        }
+        self.progressView.setProgress(progress, animated: true)
+    }
 }

@@ -18,3 +18,5 @@ FOUNDATION_EXPORT const unsigned char Acquired_SDK_IOSVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <Acquired_SDK_IOS/PublicHeader.h>
 
 
+#import "NJKWebViewProgress.h"
+#import "NJKWebViewProgressView.h"
