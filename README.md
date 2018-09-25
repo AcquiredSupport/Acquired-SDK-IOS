@@ -1,5 +1,4 @@
 # Acquired IOS Library
-Want to add checkout to your IOS app? No matter if your shopper wants to pay with a card (optionally with 3D Secure & One-click), wallet or a local payment method – all can be integrated in the same way, using the Acquired SDK. The Acquired SDK encrypts sensitive card data and sends it directly to Acquired in order to keep your PCI scope limited.
 
 ## Requirements
 
@@ -21,9 +20,9 @@ If you prefer not to use a dependency manager, you can integrate the Acquired iO
 
 ## Using the HPP Library
 
-### Instantiate
+### Initiation 
 
-To instantiate an instance of the HPP manager do the following:
+To initiate an instance of the HPP manager do the following:
 
 ```
 let hppManager = HppManager()
@@ -34,14 +33,14 @@ let hppManager = HppManager()
 
 The HPP Manager requires some Hpp settings which you can get it on acquired dashboard(server side).
 
-1) **Company Id**: utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
+1) **Company ID**: utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
 
-2) **Company MID Id**: Using this value that SDK will choose template that already set on server side.
+2) **Company MID ID**: Using this value that SDK will choose the default template that has been uploaded through the Acquired Dashboard
 
-3) **Company Hash**: This parameter is used to encode the requests of HPP, a new hash will be generated , server side will check the validdity of the hash and decodes the response.
+3) **Hash Code**: This parameter is used to encode the requests of HPP, a new hash will be generated , server side will check the validity of the hash and decode the response.
 
 ```
-let hppSetting = HppSetting(companyId:142,  companyMidId:1103,  companyHash:""your hash string")
+let hppSetting = HppSetting(companyId:211,  companyMidId:1229,  companyHash:""hashcode")
 ```
 
 ### Present Payment Form
