@@ -22,7 +22,7 @@ If you prefer not to use a dependency manager, you can integrate the Acquired iO
 
 ### Initiation 
 
-To initiate an instance of the HPP manager do the following:
+To initiate an instance of the HPPManager do the following:
 
 ```
 let hppManager = HppManager()
@@ -31,9 +31,9 @@ let hppManager = HppManager()
 
 ### Integrate With Your Server
 
-The HPP Manager requires some Hpp settings which you can get it on acquired dashboard (server side).
+The HPPManager requires some HPP settings which you can get it on Acquired Dashboard (server side).
 
-1) **Company ID**: utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
+1) **Company ID**: Utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
 
 2) **Company MID ID**: Using this value that SDK will choose the default template that has been uploaded through the Acquired Dashboard
 
@@ -51,11 +51,11 @@ Insert the code to present a payment form as follows:
 hppManager.loadHppView(viewController: self, hppSetting: hppSetting)
 ```
 
-Executing this code, HPP Manager will process the given parameters(HppSetting), get the request from the server, send the encoded request to HPP and present the form received back.
+Executing this code, HPPManager will process the given parameters(HppSetting), get the request from the server, send the encoded request to HPP and present the form received back.
 
 ###  HPP Response 
 
-On the server-side you can set your own return url or call back url, hpp will handle response automatically that you don't have to do any response handling on your app. You can also set another return url or call back url when calling HPPManager in your app:
+On the server-side you can set your own return url or call back url, hpp will handle response automatically that you don't have to do any response handling in your PP. You can also set another return url or call back url when calling HPPManager in your APP:
 
 ```
 hppSetting.error_url = "xxx"
