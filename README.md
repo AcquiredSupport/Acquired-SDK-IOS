@@ -12,7 +12,7 @@
 
 If you prefer not to use a dependency manager, you can integrate the Acquired iOS Library into your project manually.
 
-- Download the the latest release from GitHub:
+- Download the latest release from GitHub:
 
     https://github.com/AcquiredSupport/Acquired-SDK-IOS/releases
 
@@ -31,13 +31,13 @@ let hppManager = HppManager()
 
 ### Integrate With Your Server
 
-The HPP Manager requires some Hpp settings which you can get it on acquired dashboard(server side).
+The HPP Manager requires some Hpp settings which you can get it on acquired dashboard (server side).
 
 1) **Company ID**: utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
 
 2) **Company MID ID**: Using this value that SDK will choose the default template that has been uploaded through the Acquired Dashboard
 
-3) **Hash Code**: This parameter is used to encode the requests of HPP, a new hash will be generated , server side will check the validity of the hash and decode the response.
+3) **Hash Code**: This parameter is used to encode the requests of HPP, a new hash will be generated, server side will check the validity of the hash and decode the response.
 
 ```
 let hppSetting = HppSetting(companyId:211,  companyMidId:1229,  companyHash:""hashcode")
@@ -45,7 +45,7 @@ let hppSetting = HppSetting(companyId:211,  companyMidId:1229,  companyHash:""ha
 
 ### Present Payment Form
 
-Insert the code  to present a payment form as follows:
+Insert the code to present a payment form as follows:
 
 ```
 hppManager.loadHppView(viewController: self, hppSetting: hppSetting)
@@ -66,7 +66,7 @@ hppSetting.merchant_customer_id = "xxx"
 ## FAQ
 
 ### Set HPP Properties
-HppSetting is used to provide all pamarters that server requires:card detail, shipping address, billing adress...etc 
+HppSetting is used to provide all parameters that server requires:card detail, shipping address, billing address..., etc. 
 You can also set whatever HPP properties you need to in the component, for example;
 
 ```
@@ -83,7 +83,7 @@ These will be sent to the *Request Producer URL*, your server-side code must be 
 
 ### Testing     
 
-Acquired maintain separate endpoints for live and test transactions. Use the code below:
+Acquired maintains separate endpoints for live and test transactions. Use the code below:
 
 ```
 hppSetting.is_debug = true
