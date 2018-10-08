@@ -57,7 +57,7 @@ Executing this code, HPPManager will process the given parameters(HppSetting), g
 
 ###  HPP Response 
 
-On the server-side you can set your own return url or callback url, hpp will handle response automatically so that you don't have to do any response handling in your PP. You can also set another return url or call back url when calling HPPManager in your APP:
+On the server-side you can set your own return url or callback url, hpp will handle response automatically so that you don't have to do any response handling in your APP. You can also set another return url or call back url when calling HPPManager in your APP:
 
 ```
 hppSetting.error_url = "xxx"
