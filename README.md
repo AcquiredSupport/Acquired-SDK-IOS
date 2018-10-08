@@ -7,16 +7,18 @@
 
 ## HPP Library Installation
 
-
 ### Manual
 
-If you prefer not to use a dependency manager, you can integrate the Acquired iOS Library into your project manually.
+You can integrate the Acquired iOS Library into your project manually.
 
 - Download the latest release from GitHub:
 
     https://github.com/AcquiredSupport/Acquired-SDK-IOS/releases
 
 - Drag and drop the folder 'Acquired_SDK_IOS' into Xcode to use the HPP part of the library.
+
+## Documentation  ##
+https://docs.acquired.com/#hpp-overview
 
 ## Using the HPP Library
 
@@ -33,7 +35,7 @@ let hppManager = HppManager()
 
 The HPPManager requires some HPP settings which you can get it on Acquired Dashboard (server side).
 
-1) **Company ID**: Utilizing one of the Acquired HPP server SDKs; Company Id is necessary to create an instance of HppSetting which is required for HPPManager.
+1) **Company ID**: Utilising one of the Acquired HPP server SDKs; Company ID is necessary to create an instance of HppSetting which is required for HPPManager.
 
 2) **Company MID ID**: Using this value that SDK will choose the default template that has been uploaded through the Acquired Dashboard
 
@@ -55,7 +57,7 @@ Executing this code, HPPManager will process the given parameters(HppSetting), g
 
 ###  HPP Response 
 
-On the server-side you can set your own return url or call back url, hpp will handle response automatically that you don't have to do any response handling in your PP. You can also set another return url or call back url when calling HPPManager in your APP:
+On the server-side you can set your own return url or callback url, hpp will handle response automatically so that you don't have to do any response handling in your PP. You can also set another return url or call back url when calling HPPManager in your APP:
 
 ```
 hppSetting.error_url = "xxx"
