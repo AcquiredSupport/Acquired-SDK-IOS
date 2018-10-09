@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         hppSetting.transaction_type = "AUTH_ONLY"
         hppSetting.currency_code_iso3 = "GBP"
         hppSetting.amount = 100.1
+        hppSetting.error_url = "https://docs.acquired.com/error"
+        hppSetting.return_url = "https://docs.acquired.com/return"
+        hppSetting.callback_url = "https://docs.acquired.com/callback"
         hppManager.loadHppView(viewController: self, hppSetting: hppSetting)
     }
 }
