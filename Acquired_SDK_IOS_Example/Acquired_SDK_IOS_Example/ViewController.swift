@@ -23,12 +23,11 @@ class ViewController: UIViewController {
     }
     @IBAction func btnPayNowClicked(_ sender: Any) {
         let hppManager = HppManager()
-        let hppSetting = HppSetting(companyId:142,  companyMidId:1103,  companyHash:"lixiaoping")
+        let hppSetting = HppSetting(companyId:211,  companyMidId:1229,  companyHash:"hashcode")
         hppSetting.is_debug = true
         hppSetting.transaction_type = "AUTH_ONLY"
         hppSetting.currency_code_iso3 = "GBP"
         hppSetting.amount = 100.1
-        hppSetting.error_url = "https://www.unfuddle.com"
         hppManager.loadHppView(viewController: self, hppSetting: hppSetting)
     }
 }
