@@ -3,7 +3,7 @@
 ## Requirements
 
 - IOS 9.0+
-- Xcode 7.1.1+
+- Xcode 10.0+
 
 ## HPP Library Installation
 
