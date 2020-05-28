@@ -18,7 +18,7 @@ You can integrate the Acquired iOS Library into your project manually.
 - Drag and drop the folder 'Acquired_SDK_IOS' into Xcode to use the HPP part of the library.
 
 ## Documentation  ##
-https://docs.acquired.com/#hpp-overview
+https://developer.acquired.com/integrations/hpp
 
 ## Using the HPP Library
 
