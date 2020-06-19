@@ -34,6 +34,8 @@ public class HppSetting{
     public var merchant_custom_1: String?
     public var merchant_custom_2: String?
     public var merchant_custom_3: String?
+    public var merchant_contact_url: String?
+
     public var customer_title: String?
     public var customer_fname: String?
     public var customer_mname: String?
@@ -50,6 +52,7 @@ public class HppSetting{
     public var billing_country_code_iso2: String?
     public var billing_email: String?
     public var billing_phone: String?
+    public var billing_phone_code: String?
 
     public var shipping_street: String?
     public var shipping_street2: String?
@@ -60,7 +63,12 @@ public class HppSetting{
     public var shipping_email: String?
     public var shipping_phone: String?
 
-   
+    public var is_tds: Int?
+    public var tds_source: Int?
+    public var tds_type: Int?
+    public var tds_preference: Int?
+    public var return_method: String?
+
 
     private func generateOrderId()->String{
         let date = Date()

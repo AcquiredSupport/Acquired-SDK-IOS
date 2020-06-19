@@ -6,20 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		005908A82149169D00F4016D /* CommonCrypto */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 005908AB2149169D00F4016D /* Build configuration list for PBXAggregateTarget "CommonCrypto" */;
-			buildPhases = (
-				005908AC214916B000F4016D /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CommonCrypto;
-			productName = CommonCrypto;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		00073989213E23C200055762 /* Acquired_SDK_IOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 00073987213E23C200055762 /* Acquired_SDK_IOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		00073994213E269100055762 /* HppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00073993213E269100055762 /* HppManager.swift */; };
@@ -30,16 +16,6 @@
 		35AE2C5E214BB3D900A48377 /* NJKWebViewProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AE2C5A214BB3D900A48377 /* NJKWebViewProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AE2C5F214BB3D900A48377 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35AE2C5B214BB3D900A48377 /* NJKWebViewProgressView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		005908AD214916C500F4016D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0007397B213E23C200055762 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 005908A82149169D00F4016D;
-			remoteInfo = CommonCrypto;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00073984213E23C200055762 /* Acquired_SDK_IOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Acquired_SDK_IOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +109,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				005908AE214916C500F4016D /* PBXTargetDependency */,
 			);
 			name = Acquired_SDK_IOS;
 			productName = Acquired_SDK_IOS;
@@ -153,9 +128,6 @@
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
 					};
-					005908A82149169D00F4016D = {
-						CreatedOnToolsVersion = 9.4.1;
-					};
 				};
 			};
 			buildConfigurationList = 0007397E213E23C200055762 /* Build configuration list for PBXProject "Acquired_SDK_IOS" */;
@@ -171,7 +143,6 @@
 			projectRoot = "";
 			targets = (
 				00073983213E23C200055762 /* Acquired_SDK_IOS */,
-				005908A82149169D00F4016D /* CommonCrypto */,
 			);
 		};
 /* End PBXProject section */
@@ -185,22 +156,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		005908AC214916B000F4016D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This if-statement means we'll only run the main script if the CommonCryptoModuleMap directory doesn't exist\n# Because otherwise the rest of the script causes a full recompile for anything where CommonCrypto is a dependency\n# Do a \"Clean Build Folder\" to remove this directory and trigger the rest of the script to run\nif [ -d \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\" ]; then\necho \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap directory already exists, so skipping the rest of the script.\"\nexit 0\nfi\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0007397F213E23C200055762 /* Sources */ = {
@@ -216,14 +171,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		005908AE214916C500F4016D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 005908A82149169D00F4016D /* CommonCrypto */;
-			targetProxy = 005908AD214916C500F4016D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		0007398A213E23C200055762 /* Debug */ = {
@@ -405,22 +352,6 @@
 			};
 			name = Release;
 		};
-		005908A92149169D00F4016D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		005908AA2149169D00F4016D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,15 +369,6 @@
 			buildConfigurations = (
 				0007398D213E23C200055762 /* Debug */,
 				0007398E213E23C200055762 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		005908AB2149169D00F4016D /* Build configuration list for PBXAggregateTarget "CommonCrypto" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				005908A92149169D00F4016D /* Debug */,
-				005908AA2149169D00F4016D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
