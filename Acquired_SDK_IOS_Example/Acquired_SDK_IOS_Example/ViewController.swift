@@ -28,9 +28,22 @@ class ViewController: UIViewController {
         hppSetting.transaction_type = "AUTH_ONLY"
         hppSetting.currency_code_iso3 = "GBP"
         hppSetting.amount = 100.1
-        hppSetting.error_url = "https://docs.acquired.com/error"
-        hppSetting.return_url = "https://docs.acquired.com/return"
-        hppSetting.callback_url = "https://docs.acquired.com/callback"
+        hppSetting.callback_url = "https://yoururl.com/callback"
+        hppSetting.is_tds = 2
+        hppSetting.tds_type = 2
+        hppSetting.tds_preference = 0
+        
+        hppSetting.customer_fname = "Joe"
+        hppSetting.customer_lname = "Bloggs"
+        hppSetting.customer_dob = "1990-01-01"
+        hppSetting.billing_street = "152 Aldgate Drive"
+        hppSetting.billing_city = "London"
+        hppSetting.billing_zipcode = "E1 7RT"
+        hppSetting.billing_country_code_iso2 = "GB"
+        hppSetting.billing_phone_code = "44"
+        hppSetting.billing_phone = "2039826580"
+        hppSetting.billing_email = "support@acquired.com"
+        hppSetting.merchant_contact_url = "https://acquired.com/support"
         hppManager.loadHppView(viewController: self, hppSetting: hppSetting)
     }
 }
