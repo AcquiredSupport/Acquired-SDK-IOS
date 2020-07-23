@@ -37,7 +37,7 @@ public class HppManager {
             query = "\(query)\(key)=\(value)&"
             sha256_plain = "\(sha256_plain)\(value)"
         }
-        var url = hppSetting.is_debug ? "https://qahpp2.acquired.com" : "https://hpp.acquired.com"
+        var url = hppSetting.is_debug ? "https://qahpp.acquired.com" : "https://hpp.acquired.com"
         if(!query.isEmpty) {
             let index = query.index(query.endIndex, offsetBy: -1)
             query = String(query[..<index])
