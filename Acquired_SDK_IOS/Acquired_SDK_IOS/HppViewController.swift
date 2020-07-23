@@ -43,7 +43,12 @@ class HppViewController : UIViewController, UIWebViewDelegate, NJKWebViewProgres
         self.progressView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin]
         self.progressView.isHidden = true
         
-        self.hppView?.loadRequest(URLRequest(url: URL(string: (self.hppUrl)!)!))
+        let escapedString = self.hppUrl!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let url = URL(string: escapedString!)!
+        let request = URLRequest(url: url)
+        self.hppView?.loadRequest(request)
+        
+//        self.hppView?.loadRequest(URLRequest(url: URL(string: (self.hppUrl)!)!))
     }
     
     deinit {

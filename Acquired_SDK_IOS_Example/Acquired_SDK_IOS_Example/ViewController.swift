@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         hppSetting.is_tds = 2
         hppSetting.tds_type = 2
         hppSetting.tds_preference = 0
+        hppSetting.tds_source = 1
         
         hppSetting.customer_fname = "Joe"
         hppSetting.customer_lname = "Bloggs"
